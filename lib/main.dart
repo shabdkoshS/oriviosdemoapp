@@ -1,6 +1,6 @@
-import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:orivios_company_demo/setupp/login.dart';
+import 'package:orivios_company_demo/core/theme.dart';
+import 'package:orivios_company_demo/pages/login/login_view.dart';
 
 void main() {
   runApp(const MyApp());
@@ -9,35 +9,17 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
+  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: FrontPage(),
-    );
-  }
-}
+      theme: lightTheme,
+      darkTheme: darkTheme,
+      // Automatically switch based on system settings
+      themeMode: ThemeMode.system,
 
-class FrontPage extends StatelessWidget {
-  const FrontPage({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Stack(
-        children: [
-          Positioned(
-            child: Center(
-              child: AnimatedSplashScreen(
-                duration: 2500,
-                splash: "assets/orivios.png",
-                nextScreen: login(),
-                backgroundColor: Colors.white,
-              ),
-            ),
-          ),
-        ],
-      ),
+      home: LoginView(),
     );
   }
 }
